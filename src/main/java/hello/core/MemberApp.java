@@ -9,7 +9,9 @@ public class MemberApp {
 
     // 순수한 자바 메소드를 통해 개발 및 테스트
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl();
+        AppConfig appConfig = new AppConfig();
+        // MemberService memberService = new MemberServiceImpl();
+        MemberService memberService = appConfig.memberService();
         Member memberA = new Member(1L, "memberA", Grade.VIP);
         memberService.join(memberA);
 
