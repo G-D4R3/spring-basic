@@ -1,0 +1,4 @@
+사실 application context에서 직접 getBean할 일이 없다.
+스프링 컨테이너가 자동으로 의존관계 주입하는 걸 사용하거나
+@Bean 등에 맡김
+기본 기능, 순수 자바 application에서 spring container를 생성해서 사용해야하는 일이 있을 때 사용
