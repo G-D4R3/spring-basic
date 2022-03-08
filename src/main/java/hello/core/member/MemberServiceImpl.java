@@ -8,7 +8,7 @@ public class MemberServiceImpl implements MemberService{
 
     private final MemberRepository memberRepository;
 
-    @Autowired
+    @Autowired // 생성자가 딱 하나 있기 때문에 @Autowired 없어도 됨
     public MemberServiceImpl(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
