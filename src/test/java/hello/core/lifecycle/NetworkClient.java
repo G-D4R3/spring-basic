@@ -4,7 +4,7 @@ import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
 // 가짜 network client
-public class NetworkClient implements InitializingBean, DisposableBean {
+public class NetworkClient{
 
     private String url;
 
@@ -30,15 +30,13 @@ public class NetworkClient implements InitializingBean, DisposableBean {
         System.out.println("close " + url);
     }
 
-    @Override
-    public void afterPropertiesSet() throws Exception { // 의존관계 주입이 끝나면 호출한다.
+    public void init(){ // 의존관계 주입이 끝나면 호출한다.
         System.out.println("NetworkClient.afterPropertiesSet");
         connect();
         call("초기화 연결 메시지");
     }
 
-    @Override
-    public void destroy() throws Exception { // 빈 소멸 직전 호출된다.
+    public void close() { // 빈 소멸 직전 호출된다.
         System.out.println("NetworkClient.destroy");
         disconnect();
     }
