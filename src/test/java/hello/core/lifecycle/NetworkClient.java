@@ -3,6 +3,9 @@ package hello.core.lifecycle;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 // 가짜 network client
 public class NetworkClient{
 
@@ -30,12 +33,14 @@ public class NetworkClient{
         System.out.println("close " + url);
     }
 
+    @PostConstruct
     public void init(){ // 의존관계 주입이 끝나면 호출한다.
         System.out.println("NetworkClient.afterPropertiesSet");
         connect();
         call("초기화 연결 메시지");
     }
 
+    @PreDestroy
     public void close() { // 빈 소멸 직전 호출된다.
         System.out.println("NetworkClient.destroy");
         disconnect();
